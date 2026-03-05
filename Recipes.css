@@ -1,0 +1,112 @@
+.logo{
+  display: flex;  
+  justify-content: center;        
+  align-items: center;    
+  font-size: 9.5rem;   
+  font-weight:700;
+  color: black;
+  text-align: center;
+  margin-right:10rem;
+}
+#CategoryFilter{
+  margin:2rem auto;
+  text-align: center;
+  justify-content: center;
+  display:flex;
+}
+.modal{
+opacity:0;
+z-index:-1;
+display: flex;
+align-items:center;
+justify-content: center;
+position: fixed;
+top: 100; left: 0; right:0; bottom:0;
+width: 100%; height: 100%;
+background-color: rgba(46, 43, 43, 0.5);
+}
+.modal.open{
+opacity:1;
+z-index:0;
+}
+.mealform{
+width:50rem;
+height:68rem;
+background-color:white;
+position:fixed;
+top:17rem;
+text-align:center;
+font-size:2.5rem;
+border-radius: 5rem;
+}
+#add-button{
+  font-size:10rem;
+  cursor: pointer;
+  order:3;
+}
+#add-button:hover{
+  transform:scale(1.2)
+}
+#Meal-Name{
+  margin: 2rem auto;
+  border:#0b0b0b solid 1px;
+  border-radius: 1rem;
+  background-color: ghostwhite;
+  font-size: 3.5rem;
+}
+#Site{  
+margin: 2rem auto;
+border:#0b0b0b solid 1px;
+border-radius: 1rem;
+background-color: ghostwhite;
+font-size: 3.5rem;
+
+}
+
+#Meal-Category{
+position:absolute;
+margin: 2rem auto;
+border:#0b0b0b solid 1px;
+border-radius: 1rem;
+background-color: ghostwhite;
+font-size: 3.5rem;
+top: 595px;
+right:150px;
+
+}
+
+.bi-x-circle-fill{
+position:absolute;
+justify-content:center;
+color:#ff4000;
+top: 615px;
+left:50px;
+cursor:pointer;
+font-size:2.5rem;
+}
+.bi-check-circle-fill{
+position:absolute;
+justify-content:center;
+color:#19d335;
+top:615px;
+right:50px;
+cursor:pointer;
+font-size: 2.5rem;
+}
+.imagedrop-outer {
+  border: 2px dashed #aaa;
+  padding: 150px;
+  text-align: center;
+}
+
+.imagedrop.dragover {
+  border-color: #000;
+  background: #f0f0f0;
+}
+
+ .bi-file-earmark-plus-fill {
+  margin: 2rem auto;
+  font-size:5rem;
+  left:200px;
+  cursor: pointer;
+}

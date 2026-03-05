@@ -1,0 +1,236 @@
+:root{
+   --orange:#ffae00;
+   --yellow:#f4e800ee;
+   --white:#ffffff;
+   --black:#0b0b0b;
+   --gray:#f5f1f1a1;
+   --color4:0 0rem 1rem rgba(0,0,0,.1);
+   --color5:.1rem solid rgba(0,0,0,.1);
+
+}
+* {
+  font-family: "Roboto Flex", sans-serif;
+  color:#0b0b0b;
+  margin:0; padding: 0px;
+  box-sizing: border-box;
+  outline: rgb(0, 0, 0); border:rgba(0, 0, 139, 0);
+  text-decoration:wavy;
+  text-transform:capitalize;
+  transition: all .2s linear;
+}
+
+html{
+    font-size:50%;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    scroll-padding-top: 4rem;
+
+}
+body{
+    background:linear-gradient(rgb(255, 174, 0)),white;
+}
+
+.header{
+  position:relative;
+  top:0; left: 0px; right: 0;
+  z-index:10; 
+  display:flex;
+  align-items: center;
+  justify-content:space-evenly;
+  padding:3rem 9%;
+  background:ghostwhite;
+  box-shadow:var(--color4);
+}
+
+.Calendar{
+  height: 1000px;
+  background:white;
+  outline:var(--outline);
+  text-align:center;
+  font-size:5rem;
+  box-shadow:2rem -2rem  rgba(0,0,0,.1);
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+  border:#0b0b0b solid 5px;
+  overflow:hidden;
+}
+#M,#T,#W,#TH,#F,#SAT,#SUN{
+    border:#0b0b0b solid 2px;
+}
+.header .logoweekplan{
+  display: flex;  
+  justify-content: center;        
+  align-items: center;    
+  font-size: 9.5rem;   
+  font-weight:700;
+  color: black;
+  text-align: center;
+  margin-right:5.8rem;
+  order:2;
+}
+.header .logoweekplan img {height: 20rem; width:auto; justify-content: center; text-align:center;}
+
+#add-button{
+  font-size:10rem;
+  cursor: pointer;
+  order:3;
+}
+#add-button:hover{
+  transform:scale(1.2)
+}
+#Save{
+  font-size:6.5rem;
+  font-weight:700;
+  cursor: pointer;
+  order:1;
+}
+
+#Reset{
+  font-size:6.5rem;
+  font-weight:700;
+  cursor: pointer;
+  order:2;
+}
+
+.modal{
+opacity:0;
+z-index:-1;
+display: flex;
+align-items:center;
+justify-content: center;
+position: fixed;
+top: 0; left: 0; right:0; bottom:0;
+width: 100%; height: 100%;
+background-color: rgba(46, 43, 43, 0.5);
+}
+.modal-inner{
+width:50rem;
+height:50rem;
+background-color:white;
+position:fixed;
+text-align:center;
+font-size:2.5rem;
+border-radius: 5rem;
+}
+.modal-inner.appended{
+width:30rem;
+height:35rem;
+background-color:rgb(249, 249, 249);
+position:sticky;
+text-align:center;
+font-size:1.5rem;
+border-radius: 2rem;
+cursor:grab;
+z-index: 1;
+}
+
+
+.modal-inner.appended:hover{
+background-color:rgba(46, 43, 43, 0.5);
+}
+
+.modal.open{
+opacity:1;
+z-index:10;
+}
+.modal.edit{
+opacity:1;
+z-index:10;
+background-color: #ff0033;
+}
+.bi-x-circle-fill{
+position:absolute;
+justify-content:center;
+color:#ff4000;
+top:350px;
+left:50px;
+cursor:pointer;
+}
+.bi-x-circle-fill:hover{
+  transform:translateY(-10px);
+}
+.bi-check-circle-fill{
+position:absolute;
+justify-content:center;
+color:#19d335;
+top:350px;
+right:50px;
+cursor:pointer;
+border-radius: 5rem;
+}
+.bi-check-circle-fill.appended{
+display:none;
+}
+.bi-check-circle-fill:hover{
+  transform:translateY(-10px);
+}
+.bi-trash3-fill{
+display:flex;
+position: relative;
+font-size: 5rem;
+top:-12rem; 
+text-align: center;
+justify-content: center;
+opacity:0;
+}
+.bi-trash3-fill.appended{
+display:flex;
+position: relative;
+top:0.5rem; 
+opacity:1;
+cursor: pointer;
+z-index:2;
+}
+.modal-images.clicked{
+  position: relative;
+  z-index: 0;
+}
+.meals{
+  margin:2rem auto;
+  text-align: center;
+  justify-content: center;
+  display:flex;
+}
+
+.selectedmeal{
+  font-size:3.5rem;
+  font-weight:500;
+  display:flex;
+  text-align:center;
+  justify-content: center;
+  margin-top:5rem auto;
+  background:#ffae00;
+  width:30rem;
+  margin:0 auto;
+  clip-path:polygon(0 0, 100% 0, 90% 50%,100% 100%,0 100%, 10% 50%);
+}
+.selectedmeal.appended{
+  font-size:2.5rem;
+  font-weight:500;
+  display:flex;
+  text-align:center;
+  justify-content: center;
+  margin-top:5rem auto;
+  background:#ffae00;
+  width:29rem;
+  margin:0 auto;
+  clip-path:polygon(0 0, 100% 0, 90% 50%,100% 100%,0 100%, 10% 50%);
+}
+.days{
+  margin:2rem auto;
+  text-align: center;
+  justify-content: center;
+  display:flex;
+  margin-top: 8rem;
+}
+.recipes{
+  font-size:6.5rem;
+  font-weight:700;
+  order:1;
+}
+.recipes:hover{
+ color:var(--orange);
+}
+.recipes:hover{
+ transform:translateY(-20px);
+}

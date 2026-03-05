@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>FoodApp</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="MainPage.css">
+        <link rel="stylesheet" href="Recipes.css">
+        <link rel="manifest" href="site.webmanifest">
+    </head>
+
+    <body>
+
+    <header class="header">
+    <nav class="logo">
+        <a href="index.html"><img src="Food_Logo.png" ></img></a> 
+    </nav>
+    <nav class="weekplan">
+        <a href="WeekPlan.html">Week Plan</a>
+    </nav>
+        <i class="fa-solid fa-circle-plus" id="add-button"></i>
+    </header>
+      <div class="modal" id="modal">
+         <form class="mealform">
+            <h3>Meal/Recipe</h3>
+            <input id="Meal-Name" name="Meal" type="text">
+            <h3>Website/URL</h3>
+            <input id="Site" name="URL" type="text">
+            <h3>Meal Category</h3>
+            <div class="imagedrop-outer">
+            <input id="File" type="file" hidden>
+           <i class="bi bi-file-earmark-plus-fill"></i>
+            </div>
+            <select id="Meal-Category" name="MealCategory" type="select">
+            <option>High Protein</option>
+            <option>Vegan</option>
+            <option>Pescatarian</option>
+            </select>
+     <i class="bi bi-x-circle-fill" id="exit-button"></i>
+        <button type="submit">
+    <i class="bi bi-check-circle-fill" id="check-button"></i>
+        </button>
+         </form>
+      </div>
+      
+      <div class="filter">
+         <select id="CategoryFilter">
+            <option>High Protein</option>
+            <option>Vegan</option>
+            <option>Pescatarian</option>
+        </select>
+      </div>
+    <script src=Recipes.js></script>
+    <!-- <script src=server.js></script> -->
+</body>
