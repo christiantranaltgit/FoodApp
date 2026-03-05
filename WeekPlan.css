@@ -43,7 +43,7 @@ body{
 }
 
 .Calendar{
-  height: 1000px;
+  height:800px;
   background:white;
   outline:var(--outline);
   text-align:center;
@@ -65,31 +65,27 @@ body{
   font-weight:700;
   color: black;
   text-align: center;
-  margin-right:5.8rem;
-  order:2;
+  margin-right:10rem;
 }
 .header .logoweekplan img {height: 20rem; width:auto; justify-content: center; text-align:center;}
 
+#return{
+  font-size:10rem;
+  border-radius:10%;
+}
+#return:hover{
+  transform:scale(1.2);
+}
 #add-button{
   font-size:10rem;
   cursor: pointer;
-  order:3;
 }
 #add-button:hover{
   transform:scale(1.2)
 }
-#Save{
-  font-size:6.5rem;
-  font-weight:700;
+#save{
   cursor: pointer;
-  order:1;
-}
 
-#Reset{
-  font-size:6.5rem;
-  font-weight:700;
-  cursor: pointer;
-  order:2;
 }
 
 .modal{
@@ -114,7 +110,7 @@ border-radius: 5rem;
 }
 .modal-inner.appended{
 width:30rem;
-height:35rem;
+height:30rem;
 background-color:rgb(249, 249, 249);
 position:sticky;
 text-align:center;
@@ -176,7 +172,7 @@ opacity:0;
 .bi-trash3-fill.appended{
 display:flex;
 position: relative;
-top:0.5rem; 
+top:1.0rem; 
 opacity:1;
 cursor: pointer;
 z-index:2;
@@ -211,8 +207,8 @@ z-index:2;
   text-align:center;
   justify-content: center;
   margin-top:5rem auto;
-  background:#ffae00;
-  width:29rem;
+  background:#ff0033;
+  width:25rem;
   margin:0 auto;
   clip-path:polygon(0 0, 100% 0, 90% 50%,100% 100%,0 100%, 10% 50%);
 }
@@ -226,7 +222,6 @@ z-index:2;
 .recipes{
   font-size:6.5rem;
   font-weight:700;
-  order:1;
 }
 .recipes:hover{
  color:var(--orange);

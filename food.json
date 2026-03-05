@@ -2,37 +2,20 @@
   {
     "Meal": "Bibimbap",
     "Img": "/Images/1.Korean-mixed-rice-Bibimbap.jpg",
-    "URL": "https://mykoreankitchen.com/bibimbap-korean-mixed-rice-with-meat-and-assorted-vegetables/",
-    "MealCategory": "High Protein"
+    "URL": "https://mykoreankitchen.com/bibimbap-korean-mixed-rice-with-meat-and-assorted-vegetables/"
   },
   {
     "Meal": "Butter Chicken",
     "Img": "Images/Butter-Chicken_5.jpg",
-    "URL": "https://www.youtube.com/shorts/ugiNvxnts3I",
-    "MealCategory": "High Protein"
+    "URL": "https://www.youtube.com/shorts/ugiNvxnts3I"
   },
   {
     "Meal": "Gochujang Chicken",
     "Img": "Images/GochujangChicken.jpg",
-    "URL": "https://www.youtube.com/shorts/xnmz0u71xLk",
-    "MealCategory": "High Protein"
+    "URL": "https://www.youtube.com/shorts/xnmz0u71xLk"
   },
   {
     "Meal": "Salisbury Steak",
-    "URL": "https://www.recipetineats.com/salisbury-steak-with-mushroom-gravy/",
-    "Img": "Images/salisbury-steak-feature-2022.jpg",
-    "MealCategory": "High Protein"
-  },
-  {
-    "Meal": "Teriyaki Chicken",
-    "URL": "https://www.youtube.com/shorts/yokStikx2Tg",
-    "Img": "Images/chicken-teriyaki-bowls4.jpg",
-    "MealCategory": "High Protein"
-  },
-  {
-    "Meal": "Popcorn Shrimp ",
-    "URL": "https://www.youtube.com/shorts/GHsf4p3j3-c",
-    "Img": "Images/Popcorn-Shrimp-blog.jpg",
-    "MealCategory": "High Protein"
+    "URL": "https://www.recipetineats.com/salisbury-steak-with-mushroom-gravy/"
   }
 ]

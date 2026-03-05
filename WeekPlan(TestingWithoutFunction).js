@@ -8,8 +8,29 @@ const weekdayselector=document.querySelector('.days')
 const selectedmealplan=document.querySelector('.selectedmeal')
 const meals=document.querySelector('.meals')
 const mealimages=document.querySelector('.modal-images')
-const savebutton=document.getElementById('save')
 
+
+
+
+//Populate the list selection for meals 
+fetch('food.json')
+.then(response=> response.json())
+.then(data=>{
+(data.map(json=>json.Meal)).forEach(item => {
+    let mealoptions=document.createElement('option')
+    mealoptions.textContent=item
+    mealsdropdown.append(mealoptions)
+})  
+  
+mealsdropdown.addEventListener("change", (e) => {
+const mealimageslink=modalimages.querySelector('a')
+const mealimagessrc=modalimages.querySelector('img')
+mealimagessrc.src=data[e.target.selectedIndex].Img
+mealimageslink.href=data[e.target.selectedIndex].URL
+})
+
+
+})
 
 // Create dropdown list selection for weekdays
 weekdays.forEach(weekday => {
@@ -19,18 +40,36 @@ options.value=weekday.id
 options.textContent=weekday.textContent
 weekdayselector.append(options)
 })
+console.log(weekdayselector.options)
 
 
 addbutton.addEventListener('click', () => {
-    modal.classList.add("open");
-    createinnermodals()
+modal.classList.add("open");
+selectedmealplan.textContent=localStorage.getItem("mealplan");
+const innermodalclone=innermodal.cloneNode(true)
+const innerButtong = innermodalclone.querySelector('.bi-check-circle-fill');
+const innerButtonr = innermodalclone.querySelector('.bi-x-circle-fill');
+const weekdaydropdown=innermodalclone.querySelector('.days')
+const deleteappended=innermodalclone.querySelector('.bi-trash3-fill')
+const mealsdropdown=innermodalclone.querySelector('.meals')
+const modalimages=innermodalclone.querySelector('.modal-images')
+modal.appendChild(innermodalclone)
+    innerButtong.addEventListener('click', () =>{
+        document.getElementById(String(weekdaydropdown.value)).appendChild(innermodalclone);
+        modal.classList.remove('open')
+        innermodalclone.classList.add('appended')
+        innerButtong.remove()
+        innerButtonr.remove()
+    })
    selectedmealplan.textContent=localStorage.getItem("mealplan");
     modal.addEventListener('click', (e) => {
     if (e.target=="modal"){
         modal.classList.remove("open");
     }; 
 });
-
+    // if (!modal.contains(innermodal)){
+    //     createinnermodals(); 
+    // }
 });
 
 modal.addEventListener('click', (e) => {
@@ -48,7 +87,18 @@ exitbutton.addEventListener('click', () =>{
     }
 })
 
-let clonenumber=0;
+const testing1=[innermodal].map(elements=>{
+    console.log(elements.textContent)
+})
+function savestate(){
+    const elements =[innermodal].map(elements =>({
+        text: elements.textContent,
+        color:elements.style.backgroundColor,
+        id:elements.id
+    }))
+    localStorage.setItem("pageState,",JSON.stringify(elements))
+}
+
 
 function createinnermodals(){
 selectedmealplan.textContent=localStorage.getItem("mealplan");
@@ -65,7 +115,6 @@ attachButtonEvents(innermodalclone)
 
 // Function that controls all actions of the innermodal
 function attachButtonEvents(boxElement) {
-boxElement.dataset.uid=`clonenumber-${clonenumber++}`;
 const innerButtong = boxElement.querySelector('.bi-check-circle-fill');
 const innerButtonr = boxElement.querySelector('.bi-x-circle-fill');
 const weekdaydropdown=boxElement.querySelector('.days')
@@ -73,6 +122,10 @@ const deleteappended=boxElement.querySelector('.bi-trash3-fill')
 const mealsdropdown=boxElement.querySelector('.meals')
 const modalimages=boxElement.querySelector('.modal-images')
 
+// function savestate(){
+//     const elements =[].
+
+// }
 
 //Populate the list selection for meals 
 fetch('food.json')
@@ -87,10 +140,10 @@ fetch('food.json')
 mealsdropdown.addEventListener("change", (e) => {
 const mealimageslink=modalimages.querySelector('a')
 const mealimagessrc=modalimages.querySelector('img')
-console.log(mealimagessrc)
 mealimagessrc.src=data[e.target.selectedIndex].Img
 mealimageslink.href=data[e.target.selectedIndex].URL
 })
+
 
 })
 
@@ -99,55 +152,25 @@ innerButtong.addEventListener('click', () => {
 document.getElementById(String(weekdaydropdown.value)).appendChild(boxElement);
 modal.classList.remove('open')
 boxElement.classList.add('appended')
-deleteappended.classList.add('appended')
 innerButtong.remove()
 innerButtonr.remove()
+// weekdaydropdown.remove()
+
+// Will likely need same code here for rebuilding as with dropping
 mealsdropdown.style.display="none"
-weekdaydropdown.style.display="none"
-console.log(modalimages)
-deleteappended.addEventListener('click', (e) =>{
-    boxElement.remove()
+const test2=[boxElement].map(boxel=>{
+    console.log(boxel.id)
+    console.log(boxel.parentElement.id)
 })
-
-const innermodaloriginalstate=[...document.querySelectorAll(".modal-inner.appended")].map((boxel,index)=>({
-mealbanner:boxel.querySelector(".selectedmeal").className,
-mealbannertext:boxel.querySelector(".selectedmeal").textContent,
-mealimagesrc:boxel.querySelector('.modal-images').querySelector('img').src,
-mealimagehref:boxel.querySelector('.modal-images').querySelector('a').href, //These 3 lines are being seen as null and causes issue after refreshing and trying to add new items. 
-mealvalue:boxel.querySelector('.meals').value,
-mealclass:boxel.className,
-mealweekday:boxel.parentElement.id,
-selectedmealid:boxel.id,
-deletebutton:'bi bi-trash3-fill appended',
-assignedindex:boxel.dataset.uid
-}))
-
-localStorage.setItem("ogstate",JSON.stringify(innermodaloriginalstate))
-console.log(JSON.parse(localStorage.getItem('ogstate')))
-
 // Allows for user to also change where they want to place it using drop down 
 weekdaydropdown.addEventListener("change", (e) => {
 e.preventDefault();
 document.getElementById(String(weekdaydropdown.value)).appendChild(boxElement);  
 })
 
+
 })
 
-// Delete Button 
-deleteappended.addEventListener('click', () =>{
-boxElement.remove()
-const innermodaloriginalstate=[...document.querySelectorAll(".modal-inner appended")].map(boxel=>({
-mealbanner:boxel.querySelector(".selectedmeal").className,
-mealbannertext:boxel.querySelector(".selectedmeal").textContent,
-mealvalue:boxel.querySelector('.meals').value,
-mealclass:boxel.className,
-mealweekday:boxel.parentElement.id,
-selectedmealid:boxel.id,
-deletebutton:'bi bi-trash3-fill appended'
-}))
-
-localStorage.setItem("ogstate",JSON.stringify(innermodaloriginalstate))
-})
 
 
 
@@ -160,47 +183,73 @@ modal.classList.add("open");
       })
 boxElement.addEventListener("dragstart", (e)=> {
     chosen=e.target;
-    isdragging=true;
     
 })
-boxElement.addEventListener("dragend", (e)=> {
-    e.preventDefault()
-    isdragging=true;
-    
-})
-
-let isdragging=false
-let holdTimer;
-boxElement.addEventListener('mousedown', (e)=>{
-    if (isdragging) {return};
-    holdTimer=setTimeout(()=>{
-        console.log('Press detected')
-    },3000)
-})
-
 weekdays.forEach((weekday,weekdayindex) =>{
     weekday.addEventListener("dragover", (e) =>{
     e.preventDefault()
-    isdragging=true
 });
-
-
-
+    // boxElement.addEventListener('dragend', () => {
+    // weekdaydropdown.value=weekday.textContent
+    // console.log(weekdaydropdown.value)
+    // })
 
 weekday.addEventListener("drop", (e) =>{
-    weekday.appendChild(chosen)   
+    weekday.appendChild(chosen)    
     const dropdown=chosen.querySelector('.days')
     dropdown.options[weekdayindex].selected=true;
 
-    const dropinnermodaloriginalstate=JSON.parse(localStorage.getItem("ogstate"))
-    const droppedindex=dropinnermodaloriginalstate.findIndex(obj=>obj.assignedindex===chosen.dataset.uid)
-    console.log(droppedindex)
-    dropinnermodaloriginalstate[droppedindex].mealweekday=chosen.parentElement.id 
-    localStorage.setItem("ogstate",JSON.stringify(dropinnermodaloriginalstate))
-    console.log(JSON.parse(localStorage.getItem('ogstate')))
+    console.log(chosen)
+    const chosenmeal=chosen.querySelector(".meals")
+    const test2=[chosen].map(boxel=>({
+    mealbanner:boxel.querySelector(".selectedmeal").className,
+    mealbannertext:boxel.querySelector(".selectedmeal").textContent,
+    mealvalue:chosenmeal.value,
+    mealclass:boxel.className,
+    mealweekday:boxel.parentElement.id,
+    selectedmealid:boxel.id
+}))
+console.log(test2)
+localStorage.setItem("ogstate",JSON.stringify(test2))
+  const saved = JSON.parse(localStorage.getItem("ogstate"));
+    console.log(saved)
+    if (!saved) return;
+    saved.forEach(item => {
+        const box = document.createElement("div");
+        const mealbanner=document.createElement("span")
+        box.value=item.mealvalue
+        box.id=item.selectedmealid
+        box.className=item.mealclass
+        mealbanner.className=item.mealbanner
+        mealbanner.textContent=item.mealbannertext
+        box.appendChild(mealbanner)
+        const weekcontainer=item.mealweekday 
+        const testmealplan=item.selectedmeal
+        console.log(box)
+        document.getElementById(String(weekcontainer)).appendChild(box);
+    });
+
     })
 
+});
+
+
+// Create a Save and Restart Button for the Week. Save will contain window event listener while refresh will will be location.reload() to reset the calendar
+window.addEventListener("DOMContentLoaded", () => {
+    const saved = JSON.parse(localStorage.getItem("ogstate"));
+    console.log(saved)
+    if (!saved) return;
+    saved.forEach(item => {
+        const box = document.createElement("div");
+        box.value=item.mealvalue
+        box.id=item.mealid
+        box.classList.add('appended')
+        const weekcontainer=item.mealweekday
+        document.getElementById(String(weekcontainer)).appendChild(box);
     });
+});
+
+
 innerButtonr.addEventListener('click', () => {
 modal.classList.remove('open')
 boxElement.remove()
@@ -208,52 +257,3 @@ boxElement.remove()
 
 
 }
-
-// Returns Everything to Original Window Upon Reload 
-window.addEventListener("DOMContentLoaded", () => {
-const saved = JSON.parse(localStorage.getItem("ogstate"));
-console.log(saved)
-if (!saved) return;
-    saved.forEach(item => {
-        const box = document.createElement("div");
-        const modalimages=document.createElement("div");
-        const mealbanner=document.createElement("span")
-        const deletebutton=document.createElement("i")
-        const mealsdropdown=document.createElement("select")
-        const mealsdropdownvalue=document.createElement("option")
-        const mealimagesrc=document.createElement("img")
-        const mealimagehref=document.createElement('a')
-        mealimagesrc.width=150;
-        mealimagesrc.height=150;
-        mealimagehref.href=item.mealimagehref
-        mealimagesrc.src=item.mealimagesrc
-        mealimagehref.appendChild(mealimagesrc)
-        modalimages.className='modal-images'
-        modalimages.appendChild(mealimagehref)
-        mealsdropdown.className='meals'
-        mealsdropdownvalue.value=item.mealvalue
-        mealsdropdown.appendChild(mealsdropdownvalue)
-        box.id=item.selectedmealid
-        box.className=item.mealclass
-        mealbanner.className=item.mealbanner
-        mealbanner.textContent=item.mealbannertext
-        deletebutton.className=item.deletebutton
-        box.appendChild(mealbanner)
-        box.appendChild(modalimages)
-        box.appendChild(deletebutton)
-        box.appendChild(mealsdropdown)
-        mealsdropdown.style.display='none'
-        const weekcontainer=item.mealweekday 
-        const testmealplan=item.selectedmeal
-        console.log(box)
-        document.getElementById(String(weekcontainer)).appendChild(box);
-
-
-
-deletebutton.addEventListener('click', () =>{
-box.remove()
-    });
-})
-    
-})
-

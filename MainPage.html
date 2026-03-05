@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>FoodApp</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="MainPage.css">
+    </head>
+
+    <body>
+
+    <header class="header">
+    <nav class="logo">
+        <a href="#mainbody"><img src="Food_Logo.png" ></img></a> 
+    </nav>
+    <nav class="weekplan">
+        <a href="WeekPlan.html">Week Plan</a>
+    </nav>
+     <nav class="recipes">  
+        <a href="Recipes.html">Recipes</a>
+    </nav>
+    <!-- <nav class="navsidebar">
+        <ul>
+            <li><a href="#Profile">Profile</a></li>
+            <li><a href="#Settings">Settings</a></li>
+        </ul>
+    </nav> -->
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-search" id="search-btn"></div>
+
+    <form action="" class="search-form">
+        <input type="search" id="search box" placeholder="search here">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+    </header>
+
+    <section class="mainbody">
+        <h1 class="mainbody-heading"><span>Current Meal Plan</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="Images/6978167.png">
+                <h3>High Protein</h3>
+              <button class="check-button">
+             <i class="bi bi-check-lg"></i>
+            </button>
+              </div>
+            <div class="box">
+                <img src="Images/Veggies2.png">
+                <h3>Vegan</h3>
+                    <button class="check-button">
+             <i class="bi bi-check-lg"></i>
+            </button>
+            </div>
+            <div class="box">
+                <img src="Images/Fish.png">
+                <h3>Pescatarian</h3>
+                    <button class="check-button">
+             <i class="bi bi-check-lg"></i>
+            </button>
+            </div>
+        </div>
+         <nav class="navsidebar">
+        <ul>
+            <li><a href="#Profile">Profile</a></li>
+            <li><a href="#Settings">Settings</a></li>
+        </ul>
+        </nav>
+    </section>
+
+    <script src='MainPage.js'></script>
+    
+    </body>
+</html>
